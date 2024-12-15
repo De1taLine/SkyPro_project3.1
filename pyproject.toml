@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "skypro-python3"
+version = "0.1.0"
+description = ""
+authors = ["Bilal <bilalgamzaev@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
