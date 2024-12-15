@@ -1,46 +1,39 @@
-import math
+from typing import Union
 
 
-def add_numbers(a, b):
-    return a + b
+def get_mask_card_number(n: Union[str]) -> Union[str]:
+    """Функция для создания маски номера карты"""
+    mask = ""
+    if len(n) != 16:
+        return "Некорректный ввод"
+    # Создаём маску
+    for i in range(len(n)):
+        if i in range(6, 12):
+            mask = (mask + "*")
+        else:
+            mask = mask + n[i]
+    # Вставляем в маску пробелы
+    mask = mask[:4] + " " + mask[4:]
+    mask = mask[:9] + " " + mask[9:]
+    mask = mask[:14] + " " + mask[14:]
+
+    return mask
 
 
-def is_even(a):
-    return a % 2 == 0
+def get_mask_account(n: Union[str]) -> Union[str]:
+    """Функция для создания маски номера счёта"""
+    mask = "**" + n[-4:]
+    return mask
 
 
-def find_max(my_list):
-    if len(my_list) > 0:
-        return max(my_list)
-    return 0
+# Просим пользователя ввести номер карты и выводим маску номера карты
+print("Впишите номер карты:")
 
+user_input = input()
+print(get_mask_card_number(user_input))
 
-def divide(a, b):
-    if b > 0:
-        return a / b
-    return 0
+# Просим пользователя ввести номер счёта и выводим маску номера счёта
+print("Впишите номер счёта")
 
-
-def calculate_logarithm(x, base):
-    return math.log(x, base)
-
-
-def reverse_string(my_string):
-    return my_string[::-1]
-
-
-def finder(my_list, my_type):
-    counter = 0
-    if isinstance(my_list, list):
-        for item in my_list:
-            if isinstance(item, my_type):
-                counter += 1
-    return counter
-
-
-if __name__ == '__main__':
-    assert add_numbers(2, 2) == 4
-
-    assert is_even(2) == True
-
-    assert find_max([1, 2, 3, 4, 5]) == 5
+user_input = input()
+print(get_mask_account(user_input))
